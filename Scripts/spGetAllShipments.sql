@@ -1,0 +1,16 @@
+USE TerraBeata;
+GO
+ALTER PROCEDURE spGetAllShipments
+AS
+BEGIN
+	BEGIN TRY
+		SELECT *
+			FROM
+			Shipment
+			WHERE Completed = 0 ORDER BY ShipmentID DESC;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END
+GO

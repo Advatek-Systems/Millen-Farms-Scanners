@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="card border-dark">
+    <div class="card-body">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                <p class="control-label col">Pallet Number:</p>
+                <div class="col">
+                    @Html.TextBox("palletNumber", null, new { @class = "form-control border-dark", @autofocus = "autofocus" })
+                </div>
+            </div>
+            <p class="text-danger">@ViewBag.Msg</p>
+            <input type="submit" value="Go" class="btn btn-success"/>
+        }
+        <br />
+        @Html.ActionLink("Delete Case Labels", "DeleteCaseLabels", "Home", null, new { @class = "btn btn-danger" })
+    </div>
+</div>

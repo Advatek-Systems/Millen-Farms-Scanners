@@ -1,0 +1,27 @@
+USE TerraBeata;
+GO
+ALTER PROCEDURE spIsCasePalletized
+	@PalletNo VARCHAR(20)
+AS
+BEGIN
+	BEGIN TRY
+		SELECT * FROM ProductionMillen WHERE SerialNo = @PalletNo AND FullSkidNo IS NULL
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END
+GO
+
+CREATE PROCEDURE spIsPallet
+	@PalletNo VARCHAR(20)
+AS
+BEGIN
+	BEGIN TRY
+		SELECT * FROM LoadingPallet WHERE PalletID = @PalletNo;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END
+GO

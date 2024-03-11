@@ -1,0 +1,14 @@
+USE TerraBeata;
+GO
+CREATE PROCEDURE spDeletePallet
+	@PalletID INT
+AS
+BEGIN
+	BEGIN TRY
+		DELETE FROM Pallet WHERE PalletID = @PalletID;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END
+GO

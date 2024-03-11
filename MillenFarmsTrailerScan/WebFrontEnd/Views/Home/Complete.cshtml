@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Complete";
+}
+
+<h2>Has the trailer been inspected?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("id", (object)ViewBag.ID)
+
+    @Html.ActionLink("No", "Scan", "Home", new { id = ViewBag.ID }, new { @class = "btn btn-danger" })
+    <input type="submit" value="Yes" class="btn btn-success" />
+}

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Send To Freezer";
+}
+
+<div class="card border-dark">
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.Hidden("id", (long)ViewBag.ID)
+                <p class="control-label col">Send to Freezer</p>
+                <div class="col">
+                    @Html.DropDownList("freezerID", new SelectList(ViewBag.Freezers, "FreezerID", "FreezerName"), new { @class = "form-control border-dark" })
+                </div>
+            </div>
+            <p class="text-danger">@ViewBag.Msg</p>
+            <input type="submit" value="Go" class="btn btn-success" />
+        }
+    </div>
+</div>

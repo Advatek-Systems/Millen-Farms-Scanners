@@ -1,0 +1,23 @@
+ALTER PROCEDURE spMarkComplete
+	@PalletID BIGINT,
+	@DateTime DATETIME
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+			INSERT INTO
+				PrintTable2
+			VALUES
+				('Y', @PalletID, 4, @DateTime);
+
+			UPDATE LoadingPallet
+				SET
+				Completed = 1
+				WHERE PalletID = @PalletID;
+		COMMIT TRANSACTION
+	END TRY	
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+		;THROW
+	END CATCH
+END

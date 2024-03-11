@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Model.Case>
+
+@{
+    ViewBag.Title = "Scan";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("id", (object)ViewBag.ID)
+    <hr />
+    <div class="form-group">
+        <h3>Serial Number</h3>
+        <div class="col-md-10">
+            @Html.TextBox("caseNumber", null, new { @class = "form-control", @autofocus = "autofocus" })
+        </div>
+    </div>
+}
+<br /> <br />
+<div class="text-left text-danger"><br />@ViewBag.Msg</div>
+<div class="text-left text-success"><br />@ViewBag.SuccMsg</div>
+
+@if (Model.Count() > 0)
+{
+    @Html.ActionLink("Mark Pallet as Complete", "Complete", new { id = ViewBag.ID }, new { @class = "btn btn-success" })<b>&emsp;</b> <b>&emsp;</b> 
+    @Html.ActionLink("Send Pallet to Freezer", "SendToFreezer", new { id = ViewBag.ID }, new { @class = "btn btn-info" })
+    <br /><br />
+
+    <div class="text-center">
+        <h4>@Model.Count() cases currently scanned.</h4>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNo)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNo)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <br />
+    <h1>There are no cases scanned onto this pallet currently.</h1>
+}

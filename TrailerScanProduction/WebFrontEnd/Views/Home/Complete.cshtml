@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Complete";
+}
+<br />
+<h2>Are you sure you want to mark this shipment as complete?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("id", (object)ViewBag.ID)
+    @Html.ActionLink("No", "Scan", "Home", new { id = ViewBag.ID }, new { @class = "btn btn-danger" })
+    <input type="submit" value="Yes" class="btn btn-success" />
+}

@@ -1,0 +1,14 @@
+USE TerraBeata;
+GO
+CREATE PROCEDURE spDeleteShipment
+	@ShipmentID INT
+AS
+BEGIN
+	BEGIN TRY
+		DELETE FROM Shipment WHERE ShipmentID = @ShipmentID;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END
+GO

@@ -1,0 +1,14 @@
+USE TerraBeata;
+GO
+ALTER PROCEDURE spGetAllPallets
+	@ShipmentID INT
+AS
+BEGIN
+	BEGIN TRY
+		SELECT * FROM Pallet WHERE ShipmentID = @ShipmentID ORDER BY PalletID DESC;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END
+GO

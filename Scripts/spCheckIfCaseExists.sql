@@ -1,0 +1,11 @@
+CREATE PROCEDURE spCheckIfCaseExists
+	@CaseNumber VARCHAR(20)
+AS
+BEGIN
+	BEGIN TRY
+		SELECT * FROM ProductionMillen WHERE SerialNo = @CaseNumber;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END

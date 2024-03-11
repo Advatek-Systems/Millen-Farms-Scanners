@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ProductionInfo";
+}
+
+<div class="card border-dark">
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.Hidden("lotNumber", (string)ViewBag.LotNumber)
+                <p class="control-label col">Fresh or Frozen?</p>
+                <div class="col">
+                    @Html.DropDownList("freshOrFrozen", new SelectList(ViewBag.FreshOrFrozen), new { @class = "form-control border-dark" })
+                </div>
+                <br />
+                <p class="control-label col">Product:</p>
+                <div class="col">
+                    @Html.DropDownList("productID", new SelectList(ViewBag.Products, "ProductID", "ProductName"), new { @class = "form-control border-dark" })
+                </div>
+                <br />
+                <p class="control-label col">Box Size:</p>
+                <div class="col">
+                    @Html.DropDownList("boxSizeID", new SelectList(ViewBag.BoxSizes, "BoxSizeID", "BoxSizeName"), new { @class = "form-control border-dark" })
+                </div>
+                <br />
+                <p class="control-label col">Quantity:</p>
+                <div class="col">
+                    @Html.TextBox("quantity", null, new { @class = "form-control border-dark" })
+                </div>
+            </div>
+            <p class="text-danger">@ViewBag.Msg</p>
+            <input type="submit" value="Go" class="btn btn-success"/>
+        }
+    </div>
+</div>

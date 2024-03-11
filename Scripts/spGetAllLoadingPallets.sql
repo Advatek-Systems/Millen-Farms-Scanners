@@ -1,0 +1,13 @@
+ALTER PROCEDURE spGetAllLoadingPallets
+AS
+BEGIN
+	BEGIN TRY
+		SELECT *
+			FROM LoadingPallet
+			WHERE Completed = 0
+			ORDER BY PalletID DESC;
+	END TRY	
+	BEGIN CATCH
+		;THROW
+	END CATCH
+END

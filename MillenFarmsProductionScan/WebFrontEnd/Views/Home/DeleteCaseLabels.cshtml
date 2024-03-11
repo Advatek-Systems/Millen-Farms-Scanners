@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Delete Case Labels";
+}
+
+<div class="card border-dark">
+    <div class="card-body">
+        @using (Html.BeginForm("DeleteCaseLabels", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                <p class="control-label col">Serial Number:</p>
+                <div class="col">
+                    @Html.TextBox("serialNo", null, new { @class = "form-control border-dark", @autofocus = "autofocus" })
+                </div>
+            </div>
+            <p class="text-@ViewBag.Colour">@ViewBag.Msg</p>
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        }
+    </div>
+</div>
